@@ -59,7 +59,7 @@ int main()
 
 	randomizedQuickSort(test, 0, 2);
 
-	cout << test[0];
+	cout << test[0]<<endl;
 
 	system("pause");
     return 0;
