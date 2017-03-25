@@ -56,20 +56,21 @@ int partition1(int arr[], int p, int r)
 	int i, j;
 	i = p - 1;
 	j = r + 1;
-
-	do
+	while (1)
 	{
-		j--;
-	} while (arr[j]>pivot);
-	
-	do
-	{
-		i++;
-	} while (arr[i]<pivot);
+		do
+		{
+			j--;
+		} while (arr[j] > pivot);
 
-	if (i < j)swap(arr[i], arr[j]);
-	else return j;
+		do
+		{
+			i++;
+		} while (arr[i] < pivot);
 
+		if (i < j)swap(arr[i], arr[j]);
+		else return j;
+	}
 }
 
 int select1(int arr[], int p, int r, int id)
