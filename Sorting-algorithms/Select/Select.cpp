@@ -75,16 +75,21 @@ int partition1(int arr[], int p, int r)
 
 int select1(int arr[], int p, int r, int id)
 {
-	if (r == p) return arr[p];
+	if (p == r)return arr[p];
 
+	int q = partition1(arr, p, r);
 
+	int k = q - p + 1;
+
+	if (id <= k) select(arr, p, q, id);
+	else select(arr, q + 1, r, id - k);
 }
 
 int main()
 {
 	int test[5] = { 5,4,3,2,1 };
 
-	cout << select(test, 0, 4, 1);
+	cout << select1(test, 0, 4, 2);
 
 	system("pause");
     return 0;
