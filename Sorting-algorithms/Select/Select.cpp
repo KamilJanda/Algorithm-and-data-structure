@@ -74,7 +74,7 @@ int partition1(int arr[], int p, int r)
 
 int select1(int arr[], int p, int r, int id)
 {
-
+	if (r == p) return arr[p];
 
 
 }
