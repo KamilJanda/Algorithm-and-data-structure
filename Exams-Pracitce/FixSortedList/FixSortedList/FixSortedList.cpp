@@ -36,7 +36,8 @@ void push_back(node** head, int data)
 node* fixSortedList(node* list)
 {
 	node* move;
-	node* tmp;
+	node* prev;
+	node* current;
 	node* sentinel=new node;
 	
 
@@ -47,21 +48,46 @@ node* fixSortedList(node* list)
 	}
 	else
 	{
-		tmp = list;
+		prev = list;
+		current = list->next;
 
-		while (tmp->next != NULL&&tmp->key < tmp->next->key)tmp = tmp->next;
+		
+		while (current->next != NULL)
+		{
+			if (prev->key < current->key&&current->key < current->next->key)
+			{
+				prev = prev->next;
+				current = current->next;
+			}
+			else if (!(prev->key < current->next->key))
+			{
+				prev = prev->next;
+				current = current->next;
+			}
+			else
+			{
+				break;
+			}
+		}
+		
 
-		move = tmp->next;
-		tmp->next = move->next;
+		if (current->next == NULL&&prev->key > current->key);
+		{
+			move = current;
+			prev->next = current->next;
+		}
+
+		move = current;
+		prev->next = current->next;
 	}
 
 	sentinel->next = list;
-	tmp = sentinel;
+	prev = sentinel;
 
-	while (tmp->next != NULL&&tmp->next->key < move->key)tmp = tmp->next;
+	while (prev->next != NULL&&prev->next->key < move->key)prev = prev->next;
 
-	move->next = tmp->next;
-	tmp->next = move;
+	move->next = prev->next;
+	prev->next = move;
 
 
 	return sentinel->next;
@@ -76,8 +102,15 @@ int main()
 
 	push_back(&list, 1);
 	push_back(&list, 2);
-	push_back(&list, 0);
+	push_back(&list, 333);
 	push_back(&list, 6);
+	push_back(&list, 7);
+	push_back(&list, 8);
+	push_back(&list, 9);
+	push_back(&list, 10);
+
+
+
 
 	fixed = fixSortedList(list);
 	show(fixed);
