@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{39170297-4939-4504-8E99-5A6DB42A9B41}</ProjectGuid>
+    <ProjectGuid>{ABD503C5-EFCE-496D-BFC6-39BE1B4BC0E5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Mergesort</RootNamespace>
+    <RootNamespace>BST</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -149,7 +149,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Merge sort.cpp" />
+    <ClCompile Include="BST.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -81,15 +81,15 @@ int select1(int arr[], int p, int r, int id)
 
 	int k = q - p + 1;
 
-	if (id <= k) select(arr, p, q, id);
-	else select(arr, q + 1, r, id - k);
+	if (id <= k) select1(arr, p, q, id);
+	else select1(arr, q + 1, r, id - k);
 }
 
 int main()
 {
 	int test[5] = { 5,4,3,2,1 };
 
-	cout << select1(test, 0, 4, 2);
+	cout << select(test, 0, 4, 1);
 
 	system("pause");
     return 0;
