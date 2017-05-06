@@ -23,6 +23,7 @@ public:
 	void makeRandTree(BST &tree);
 	BSTNode* search(BSTNode* root, int key);
 	BSTNode* min(BSTNode* root);
+	BSTNode* max(BSTNode* root);
 	void inorderTreeWalk(BSTNode* root);
 	void preorderTreeWalk(BSTNode * root);
 	void postorderTreeWalk(BSTNode* root);
@@ -30,6 +31,8 @@ public:
 	BSTNode* treePredecessor(BSTNode* x);
 	void insert(BSTNode* &root, int data);
 	BSTNode* remove(BSTNode* &root, int key);
+	void remove(BSTNode* &root, BSTNode* &del);
+	void transplant(BSTNode* &root,BSTNode* &from, BSTNode* &to);
 };
 
 BST::BST()
@@ -63,6 +66,16 @@ BST::BSTNode* BST::min(BSTNode * root)
 {
 	if (root == NULL) return root;
 	while (root->left != NULL)root = root->left;
+	return root;
+}
+
+BST::BSTNode* BST::max(BSTNode * root)
+{
+	if (root == NULL) return root;
+	while (root->right != NULL)
+	{
+		root = root->right;
+	}
 	return root;
 }
 
@@ -113,7 +126,7 @@ BST::BSTNode* BST::treeSuccessor(BSTNode* x)
 
 BST::BSTNode * BST::treePredecessor(BSTNode * x)
 {
-	if (x->left != NULL) min(x->left);
+	if (x->left != NULL) max(x->left);
 	else
 	{
 		BSTNode* tmp = x->parent;
@@ -182,6 +195,42 @@ BST::BSTNode* BST::remove(BSTNode * &root, int key)
 	if (x != del) x->key = del->key;
 
 	return del;
+}
+
+void BST::remove(BSTNode *& root, BSTNode *& del) //O(h)
+{	
+	if (del->left == NULL)
+	{
+		transplant(root, del->right, del);
+	}
+	else if(del->right==NULL)
+	{
+		transplant(root, del->left, del);
+	}
+	else
+	{
+		BSTNode* suc = min(del->right);
+
+		if (suc->parent != del)
+		{
+			transplant(root, suc->right, suc);
+			suc->right = del->right;
+			del->right->parent = suc;
+		}
+
+		transplant(root, suc, del);
+		suc->left = del->left;
+		suc->left->parent = suc;
+	}
+}
+
+void BST::transplant(BSTNode* &root, BSTNode *& object, BSTNode *& to)
+{
+	if (to == root)	root = object;
+	else if (to->parent->right == to)	to->parent->right = object;
+	else to->parent->left = object;
+
+	if (object != NULL)object->parent = to->parent;
 }
 
 
