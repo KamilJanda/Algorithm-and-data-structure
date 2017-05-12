@@ -27,7 +27,7 @@ int sizeOfTree(BSTNode* root)
 	else return (sizeOfTree(root->left) + 1 + sizeOfTree(root->right));
 }
 
-void makeInOrderArr(BSTNode* root,int arr[],int* index_ptr)
+void makeInOrderArr(BSTNode* root,int arr[],int* index_ptr) //O(n)
 {
 	if (root != NULL)
 	{
@@ -40,7 +40,7 @@ void makeInOrderArr(BSTNode* root,int arr[],int* index_ptr)
 	}
 }
 
-int* mergeTwoArr(int* a,int sizeA, int* b,int sizeB)
+int* mergeTwoArr(int* a,int sizeA, int* b,int sizeB) //O(n+m)
 {
 	int size = sizeA + sizeB;
 	int idA = 0;
@@ -81,7 +81,7 @@ int* mergeTwoArr(int* a,int sizeA, int* b,int sizeB)
 	return arr;
 }
 
-BSTNode* sortedArrToBST(int arr[], int start, int end)
+BSTNode* sortedArrToBST(int arr[], int start, int end) //O(n)
 {
 	if (start <= end)
 	{
@@ -100,7 +100,7 @@ BSTNode* sortedArrToBST(int arr[], int start, int end)
 	}
 }
 
-BSTNode* mergeTwoBST(BSTNode* treeA, BSTNode* treeB)
+BSTNode* mergeTwoBST(BSTNode* treeA, BSTNode* treeB) //O(n+m) n-sizeA m-sizeB
 {
 	int i;
 	int sizeA = sizeOfTree(treeA);
