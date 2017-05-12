@@ -56,7 +56,7 @@ BSTNode* pop(stackNode* &stack)
 
 //end of stack stuff
 
-bool findPair(BSTNode* root, int sum)
+bool findPair(BSTNode* root, int sum) //O(n) time, O(Logn) space
 {
 	stackNode* stackLeft = NULL;
 	stackNode* stackRigh = NULL;
