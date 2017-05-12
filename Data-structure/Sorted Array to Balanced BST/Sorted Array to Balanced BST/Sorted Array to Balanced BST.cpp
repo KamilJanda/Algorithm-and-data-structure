@@ -21,7 +21,7 @@ struct BBSTNode
 	}
 };
 
-BBSTNode* makeBalancedBST(int arr[], int start,int end) //O(n)
+BBSTNode* makeBalancedBST(int arr[], int start,int end) //O(n) 
 {
 	if (start<=end)
 	{
